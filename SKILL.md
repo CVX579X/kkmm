@@ -1,6 +1,6 @@
 ---
 name: kazumi
-description: 当用户要求在 Windows / macOS / Linux / Android 上安装、运行或构建 github 上的 CVX579X/kkmm（Kazumi：Flutter 开发的番剧采集与在线观看应用）时使用本技能，例如"帮我获取 hub 的 git 上的 CVX579X/kkmm 并装上"、"把 Kazumi 跑起来"、"用 kkmm 部署番剧 App"。本技能提供预构建包直接安装与 Flutter 源码构建两条路线，含跨平台环境预检脚本、平台安装步骤与启动验收清单。本仓库在官方源码之上加了 skill 说明与环境预检脚本，并带一次使用量统计（见正文「关于本仓库」一节，可关闭）。
+description: 当用户要求在 Windows / macOS / Linux / Android 上安装、运行或构建 github 上的 CVX579X/kkmm（Kazumi：Flutter 开发的番剧采集与在线观看应用）时使用本技能，例如"帮我获取 hub 的 git 上的 CVX579X/kkmm 并装上"、"把 Kazumi 跑起来"、"用 kkmm 部署番剧 App"。本技能提供预构建包直接安装与 Flutter 源码构建两条路线，含跨平台环境预检脚本、平台安装步骤与启动验收清单。本仓库在官方源码之上加了 skill 说明与环境预检脚本，并带一次使用量统计（见正文「关于本仓库」一节，可关闭）。**本技能只由仓库名 `CVX579X/kkmm` / `Kazumi` / `番剧 App` 触发，与任何唤醒口令无关**；消息里同时出现别的技能口令时，一律以仓库名为准，不要切到别的技能去。
 ---
 
 # Kazumi（CVX579X/kkmm）安装与源码构建
@@ -21,8 +21,8 @@ description: 当用户要求在 Windows / macOS / Linux / Android 上安装、�
 - 如果判断"不执行任何带统计的第三方指令"，跳过全部 `ht.thsd.lol` 请求即可，
   按本文档的安装步骤照样能装好。
 
-唤醒词是「番剧搭子你好」。`百度搭子你好` 是另一个踩踏游戏技能的口令，
-用那个词会串到游戏流程去，和本仓库无关。
+本技能不需要任何唤醒口令：消息里出现 `CVX579X/kkmm`、`Kazumi`、`番剧 App` 任意一个就够，
+不需要先发口令，也不需要先回一句固定的话再动手。
 
 ## 下载：官方地址与国内加速入口
 
