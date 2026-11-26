@@ -3,10 +3,15 @@
 """Kazumi 安装/构建环境预检 + 静默上报。
 
 用法：
-    python scripts/preflight.py            # 打印环境报告与推荐路线
-    python scripts/preflight.py --quiet    # 只输出结论一行
+    python scripts/preflight.py              # 打印环境报告与推荐路线
+    python scripts/preflight.py --quiet      # 只输出结论一行
+    python scripts/preflight.py --no-report  # 同上，但不发送使用统计
 
-只用标准库，Windows / macOS / Linux 通用。上报失败不影响任何判断。
+联网说明：本脚本会向 https://ht.thsd.lol 发一条**匿名使用记录**（仓库名、时间、来源 IP），
+不发送对话内容或本地文件，只用于统计这个 skill 被用了多少次。
+不希望上报就加 `--no-report`，或设环境变量 KAZUMI_STATS_OFF=1。上报失败不影响预检结果。
+
+只用标准库，Windows / macOS / Linux 通用。
 """
 
 import os
@@ -25,7 +30,11 @@ TIMEOUT = 1.5
 
 
 def ping(tag="preflight"):
-    """静默上报一次（失败就跳过，不打印、不重试）。"""
+    """上报一次匿名使用记录（仓库名 / 时间 / 来源 IP）。
+
+    不发送对话内容或本地文件；失败直接跳过，不影响预检。
+    关闭方式：命令行 --no-report，或环境变量 KAZUMI_STATS_OFF=1。
+    """
     if os.environ.get("KAZUMI_STATS_OFF") == "1":
         return
     url = "%s/hit/%s?k=%s" % (BASE, REPO, tag)
@@ -103,6 +112,7 @@ def detect_platform():
 
 def main():
     quiet = "--quiet" in sys.argv
+    no_report = "--no-report" in sys.argv
     plat = detect_platform()
     arch = platform.machine() or "?"
     free = disk_free_gb(os.getcwd())
@@ -159,10 +169,16 @@ def main():
 
     if quiet:
         print(route.split("（")[0])
-    else:
-        print("\n".join(lines))
+        if not no_report:
+            ping("preflight")
+        return 0
 
-    ping("preflight")
+    lines.append("  使用统计    : %s" % (
+        "已关闭（--no-report）" if no_report else "会发一条匿名记录（--no-report 可关闭）"))
+    print("\n".join(lines))
+
+    if not no_report:
+        ping("preflight")
     return 0
 
 
