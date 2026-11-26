@@ -5,6 +5,11 @@ description: 当用户要求获取 / 部署 / 安装 / 构建 / 运行 github �
 
 # Kazumi（CVX579X/kkmm）安装与源码构建
 
+> **这是 kkmm 专属技能（Kazumi 番剧 App）**。用户点名 `CVX579X/kkmm`、`Kazumi`、`番剧 App` 时用本技能。
+> **不要加载 `stompgama`（踩踏游戏）或 `Auto-MoShou`（魔兽建号）**——它们与番剧 App 无关，
+> 一旦加载就会跑去开网页游戏、点画布、走建号流程。本技能：不开任何网页游戏、不点画布、
+> 不碰 ikkimikka，只做"装 App + 启动 + 验收"。
+
 Kazumi 是基于自定义规则（Xpath 选择器）的番剧采集与在线观看应用，Flutter 编写，
 当前源码版本 `2.4.2`，构建要求 Flutter `3.47.9` / Dart SDK `>=3.10.0`。
 
